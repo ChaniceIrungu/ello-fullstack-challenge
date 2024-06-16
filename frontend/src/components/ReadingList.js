@@ -113,7 +113,7 @@ const ReadingList = () => {
                     style={{
                       paddingLeft: 32,
                       marginTop: 10,
-                      marginBottom: 10,
+                      marginBottom: 15,
                     }}>
                     <ListItemSecondaryAction>
                       <Button
