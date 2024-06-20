@@ -75,7 +75,7 @@ const BookCard = ({ book }) => {
           <Box py={2}>
             <Button
               variant="contained"
-              sx={{ backgroundColor: 'darkturquoise', color: 'white', '&:hover': { backgroundColor: 'steelblue' } }}
+              sx={{ backgroundColor: 'darkturquoise', color: 'white', '&:hover': { backgroundColor: 'steelblue' }, borderRadius: '50px' }}
               onClick={handleOpen}
             >
               Assign Book
@@ -131,6 +131,7 @@ const BookCard = ({ book }) => {
                 '&:hover': {
                   backgroundColor: 'gold',
                 },
+                borderRadius: '50px',
               }}>
             Assign
           </Button>

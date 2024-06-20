@@ -97,7 +97,7 @@ const ReadingList = () => {
                         <ListItemSecondaryAction>
                           <Button
                             variant="contained"
-                            sx={{ backgroundColor: "darkturquoise" }}
+                            sx={{ backgroundColor: "darkturquoise" ,borderRadius: '50px',}}
                             size={isSmallScreen ? "small" : "medium"}
                             onClick={() =>
                               removeBookFromReadingList(book, studentId)
@@ -118,7 +118,7 @@ const ReadingList = () => {
                     <ListItemSecondaryAction>
                       <Button
                         variant="contained"
-                        sx={{ backgroundColor: "darkturquoise" }}
+                        sx={{ backgroundColor: "darkturquoise",borderRadius: '50px' }}
                         size={isSmallScreen ? "small" : "medium"}
                         startIcon={<DeleteIcon />}
                         onClick={() => removeBookFromReadingList(book)}>

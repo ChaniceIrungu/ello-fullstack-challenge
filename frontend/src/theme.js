@@ -21,7 +21,7 @@ const theme = createTheme({
       fontWeight: 500,
     },
     button: {
-     
+      borderRadius: '50px',
       fontWeight: 800,
     //    backgroundColor: '#28B8B8'
     },
