@@ -26,7 +26,7 @@ const students = [
 const colors = ["#f0f8ff", "#e6e6fa", "#ffe4e1"];
 
 const ReadingList = () => {
-  const { readingList, removeBookFromReadingList } = useReadingList();
+  const { readingList, removeBookFromReadingList, addBookToReadingList, recommendations } = useReadingList();
   const [open, setOpen] = React.useState({});
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -97,13 +97,13 @@ const ReadingList = () => {
                         <ListItemSecondaryAction>
                           <Button
                             variant="contained"
-                            sx={{ backgroundColor: "darkturquoise" ,borderRadius: '50px',}}
+                            sx={{ backgroundColor: "darkturquoise", borderRadius: '50px' }}
                             size={isSmallScreen ? "small" : "medium"}
                             onClick={() =>
                               removeBookFromReadingList(book, studentId)
                             }
                             startIcon={<DeleteIcon />}>
-                            from {student.name}
+                            Remove {student.name}
                           </Button>
                         </ListItemSecondaryAction>
                       </ListItem>
@@ -118,11 +118,11 @@ const ReadingList = () => {
                     <ListItemSecondaryAction>
                       <Button
                         variant="contained"
-                        sx={{ backgroundColor: "darkturquoise",borderRadius: '50px' }}
+                        sx={{ backgroundColor: "darkturquoise", borderRadius: '50px' }}
                         size={isSmallScreen ? "small" : "medium"}
                         startIcon={<DeleteIcon />}
                         onClick={() => removeBookFromReadingList(book)}>
-                        Book
+                        Remove Book
                       </Button>
                     </ListItemSecondaryAction>
                   </ListItem>
@@ -131,6 +131,56 @@ const ReadingList = () => {
             </React.Fragment>
           ))}
         </List>
+
+     {/* Recommendations Section */}
+     {recommendations.recommendedBooks.length > 0 && (
+          <>
+            {/* Display Introductory Message */}
+            <Typography variant="body1" align="center" style={{ marginTop: '30px', fontStyle: 'italic' }}>
+              {recommendations.introMessage}
+            </Typography>
+
+            <Typography variant="h4" component="div" gutterBottom align="center" style={{ marginTop: '20px' }}>
+              Recommended Books
+            </Typography>
+
+            <List>
+              {recommendations.recommendedBooks.map((book, index) => (
+                <ListItem
+                  key={book.id}
+                  style={{ backgroundColor: colors[index % colors.length] }}>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        variant={isSmallScreen ? "h6" : "h5"}
+                        component="div">
+                        {book.title}
+                      </Typography>
+                    }
+                    // secondary={
+                    //   <Typography
+                    //     variant={isSmallScreen ? "body2" : "body1"}
+                    //     color="text.secondary">
+                    //     Author: {book.author}
+                    //   </Typography>
+                    // }
+                  />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => addBookToReadingList(book, [])}>
+                    Add to Reading List
+                  </Button>
+                </ListItem>
+              ))}
+            </List>
+
+            {/* Display Concluding Message */}
+            <Typography variant="body1" align="center" style={{ marginTop: '20px', fontStyle: 'italic' }}>
+              {recommendations.concludingMessage}
+            </Typography>
+          </>
+        )}
       </Paper>
     </Box>
   );
